@@ -7,10 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "vitest"
+    "test": "vitest",
+    "postinstall": "prisma skills sync || exit 0"
   },
   "dependencies": {
+    "@prisma/client": "^7.10.0",
     "next": "16.3.6",
+    "prisma": "^8.0.0-rc.15",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
