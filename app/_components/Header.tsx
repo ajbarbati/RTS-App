@@ -6,28 +6,31 @@ export async function Header() {
   const session = await auth();
 
   return (
-    <header className="border-b border-zinc-200 bg-white">
+    <header className="border-b border-zinc-200/80 bg-white/90 backdrop-blur">
       <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-4 px-4 py-3">
-        <Link href="/" className="text-sm font-semibold tracking-tight">
+        <Link
+          href="/"
+          className="text-sm font-semibold tracking-tight text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
+        >
           RTS Stock Lookup
         </Link>
 
-        <nav className="flex items-center gap-3 text-sm">
+        <nav className="flex items-center gap-2 text-sm sm:gap-3">
           {session?.user ? (
             <>
-              <span className="hidden text-zinc-600 sm:inline">
+              <span className="hidden truncate text-zinc-600 sm:inline">
                 {session.user.email}
               </span>
               <Link
                 href="/quote"
-                className="font-medium text-zinc-900 underline-offset-4 hover:underline"
+                className="rounded-lg px-2 py-1.5 font-medium text-zinc-900 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
               >
                 Quote
               </Link>
               <form action={logoutAction}>
                 <button
                   type="submit"
-                  className="rounded border border-zinc-300 px-3 py-1.5 font-medium hover:bg-zinc-50"
+                  className="rounded-lg border border-zinc-300 bg-white px-3 py-1.5 font-medium text-zinc-900 transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
                 >
                   Log out
                 </button>
@@ -37,13 +40,13 @@ export async function Header() {
             <>
               <Link
                 href="/login"
-                className="font-medium text-zinc-900 underline-offset-4 hover:underline"
+                className="rounded-lg px-2 py-1.5 font-medium text-zinc-900 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
               >
                 Log in
               </Link>
               <Link
                 href="/signup"
-                className="rounded bg-zinc-900 px-3 py-1.5 font-medium text-white hover:bg-zinc-800"
+                className="rounded-lg bg-teal-800 px-3 py-1.5 font-medium text-white transition hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
               >
                 Sign up
               </Link>

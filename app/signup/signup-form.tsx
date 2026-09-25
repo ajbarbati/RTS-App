@@ -4,25 +4,15 @@ import { useActionState } from "react";
 import Link from "next/link";
 import { Field } from "@/app/_components/Field";
 import { SubmitButton } from "@/app/_components/SubmitButton";
-import { loginAction, type LoginState } from "./actions";
+import { signUpAction, type SignUpState } from "./actions";
 
-const initialState: LoginState = { error: null };
+const initialState: SignUpState = { error: null };
 
-type LoginFormProps = {
-  registered?: boolean;
-};
-
-export function LoginForm({ registered = false }: LoginFormProps) {
-  const [state, formAction] = useActionState(loginAction, initialState);
+export function SignUpForm() {
+  const [state, formAction] = useActionState(signUpAction, initialState);
 
   return (
     <div className="flex flex-col gap-5">
-      {registered ? (
-        <p className="rounded-lg border border-teal-200 bg-teal-50 px-3 py-2 text-sm text-teal-900">
-          Account created. Log in below.
-        </p>
-      ) : null}
-
       <form action={formAction} className="flex flex-col gap-3">
         <Field
           label="Email"
@@ -37,7 +27,7 @@ export function LoginForm({ registered = false }: LoginFormProps) {
           name="password"
           required
           minLength={8}
-          autoComplete="current-password"
+          autoComplete="new-password"
         />
 
         <p
@@ -47,16 +37,18 @@ export function LoginForm({ registered = false }: LoginFormProps) {
           {state.error ?? "\u00A0"}
         </p>
 
-        <SubmitButton pendingLabel="Signing in…">Log in</SubmitButton>
+        <SubmitButton pendingLabel="Creating account…">
+          Create account
+        </SubmitButton>
       </form>
 
       <p className="text-sm text-zinc-600">
-        Need an account?{" "}
+        Already have an account?{" "}
         <Link
-          href="/signup"
+          href="/login"
           className="font-medium text-teal-800 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
         >
-          Sign up
+          Log in
         </Link>
       </p>
     </div>

@@ -5,21 +5,22 @@ export default async function Home() {
   const session = await auth();
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center gap-6 px-4 py-16">
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight">
-          Look up a stock&apos;s opening price
-        </h1>
-        <p className="mt-2 max-w-xl text-zinc-600">
-          Create an account, sign in, and search a ticker like AAPL.
-        </p>
-      </div>
+    <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center px-4 py-16">
+      <p className="text-sm font-medium uppercase tracking-[0.15em] text-teal-800">
+        RTS Stock Lookup
+      </p>
+      <h1 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-zinc-900 sm:text-4xl">
+        Look up a stock&apos;s opening price
+      </h1>
+      <p className="mt-3 max-w-xl text-base text-zinc-600">
+        Create an account, sign in, and search a ticker like AAPL.
+      </p>
 
-      <div className="flex flex-wrap gap-3">
+      <div className="mt-8 flex flex-wrap gap-3">
         {session?.user ? (
           <Link
             href="/quote"
-            className="rounded bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
+            className="inline-flex items-center justify-center rounded-lg bg-teal-800 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
           >
             Go to quote
           </Link>
@@ -27,13 +28,13 @@ export default async function Home() {
           <>
             <Link
               href="/signup"
-              className="rounded bg-zinc-900 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-800"
+              className="inline-flex items-center justify-center rounded-lg bg-teal-800 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
             >
               Sign up
             </Link>
             <Link
               href="/login"
-              className="rounded border border-zinc-300 bg-white px-4 py-2 text-sm font-medium hover:bg-zinc-50"
+              className="inline-flex items-center justify-center rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm font-medium text-zinc-900 transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-800 focus-visible:ring-offset-2"
             >
               Log in
             </Link>
