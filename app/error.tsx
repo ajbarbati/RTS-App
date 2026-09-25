@@ -1,13 +1,19 @@
 "use client";
 
+import { useEffect } from "react";
 import { Card } from "@/app/_components/Card";
 
 export default function Error({
+  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    console.error(error);
+  }, [error]);
+
   return (
     <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-4 py-12">
       <Card>
